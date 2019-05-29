@@ -3,6 +3,7 @@ import numpy as np
 from functools import reduce
 from string import digits, punctuation
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.preprocessing.text import Tokenizer
 
 
 def get_char_decoder(data):
@@ -82,6 +83,29 @@ def preprocess_data_word(data_org, x_label, y_label, max_len_seq=None):
     
     return (x_train, y_train), (x_val, y_val), (x_test, y_test), data
 
+def preprocess_data_word_tokenizer(data_org, x_label, y_label, max_len_seq=None):
+    data = data_org.copy()
+    if max_len_seq:
+        review_cleaned= data[x_label].str.split().apply(lambda x: " ".join(x[: max_len_seq]))
+        review_cleaned = review_cleaned.apply(lambda x: re.sub(r' +', ' ', x))
+        data[x_label] = review_cleaned.apply(lambda x: re.sub(r' (?=[\.,!?&\-])','', x))
+        
+    tok = Tokenizer()
+    tok.fit_on_texts(data[x_label].values)
+    encoded_data = tok.texts_to_sequences(data[x_label].values)
+    max_len_seq = min(max_len_seq, max([len(row) for row in encoded_data])) if max_len_seq else max([len(row) for row in encoded_data])
+    encoded_data = pad_sequences(encoded_data, value=0, padding="post", maxlen=max_len_seq)
+    encoded_data = np.array(encoded_data)
+    tok.index_word[0] = "<PAD>"
+    
+    x_train = encoded_data[data.df_ == 0]
+    y_train = data[data.df_ == 0][y_label].values[:, np.newaxis]
+    x_val = encoded_data[data.df_ == 1]
+    y_val = data[data.df_ == 1][y_label].values[:, np.newaxis]
+    x_test = encoded_data[data.df_ == 2]
+    y_test = data[data.df_ == 2][y_label].values[:, np.newaxis]
+    
+    return (x_train, y_train), (x_val, y_val), (x_test, y_test), tok.index_word
 
 
 def clear_text(text, is_all_lower=True):

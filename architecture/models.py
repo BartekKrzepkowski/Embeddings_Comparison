@@ -1,6 +1,3 @@
-# https://github.com/tensorflow/tensorboard/tree/master/docs/r2
-# https://mlwhiz.com/blog/2019/03/09/deeplearning_architectures_text_classification/
-
 import tensorflow.keras.backend as K
 import tensorflow as tf
 from tensorflow.keras import layers
@@ -28,8 +25,8 @@ def model_rnn(kwargs):
     x = embeddings[kwargs["emb_layer"]](**kwargs["emb_params"])(nn_input)
     
     x = layers.SpatialDropout1D(0.1)(x)
-    x = layers.Bidirectional(layers.GRU(64, dropout=0.3, recurrent_dropout=0.3, return_sequences=True))(x)
-    x = layers.Bidirectional(layers.GRU(32, dropout=0.4, recurrent_dropout=0.4, return_sequences=True))(x)
+    x = layers.Bidirectional(layers.GRU(32, dropout=0.3, recurrent_dropout=0.3, return_sequences=True))(x)
+    x = layers.Bidirectional(layers.GRU(16, dropout=0.4, recurrent_dropout=0.4, return_sequences=True))(x)
     avg_pool = layers.GlobalAveragePooling1D()(x)
     max_pool = layers.GlobalMaxPooling1D()(x)
     x = layers.concatenate([avg_pool, max_pool])
