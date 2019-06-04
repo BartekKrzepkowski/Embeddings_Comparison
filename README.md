@@ -11,7 +11,6 @@ This repo contains review of several phrase embeddings takes, publicly known in 
 >>Non-Pre-Trained
 > - Char based
 > - Word based
-
 >Pre-Trained but fine-tuned:
 > - USE
 > - ELMO
