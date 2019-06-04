@@ -10,7 +10,7 @@ This repo contains review of several phrase embeddings takes, publicly known in 
 >Proper Embedding Layer:
 >>Non-Pre-Trained
 > - Char based
-> - Word based
+> - Word based<br>
 >Pre-Trained but fine-tuned:
 > - USE
 > - ELMO
