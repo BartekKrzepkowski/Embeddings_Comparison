@@ -1,7 +1,7 @@
-# Embeddings_Comparison
+# Embeddings Comparison
 This repo contains review of several phrase embeddings takes, publicly known in NLP community, evaluated on Rotten Tomatoes dataset.
 
-# In notebooks you can find:
+# In the notebooks you can find:
 Up to three architecure:
 - RNN
 - CNN
@@ -18,6 +18,6 @@ Up to three architecure:
 >> - BERT
 
 # Next TODO:
- - Flair
+ - Flair Layer
  - Attention Layer
  - Embeddings loaded at generator level instead of embedded layer
