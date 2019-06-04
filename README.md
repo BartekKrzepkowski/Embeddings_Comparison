@@ -8,7 +8,7 @@ This repo contains review of several phrase embeddings takes, publicly known in 
 - FFNN
 
 >Proper Embedding Layer:
->Non-Pre-Trained
+>>Non-Pre-Trained
 > - Char based
 > - Word based
 
