@@ -7,16 +7,17 @@ Up to three architecure:
 - CNN
 - FFNN
 
-Proper Embedding Layer:
+# Proper Embedding Layer:
 >Non-Pre-Trained
 >> - Char based
 >> - Word based
+
 >Pre-Trained but fine-tuned:
 >> - USE
 >> - ELMO
 >> - BERT
 
-#Next TODO:
+# Next TODO:
  - Flair
  - Attention Layer
  - Embeddings loaded at generator level instead of embedded layer
