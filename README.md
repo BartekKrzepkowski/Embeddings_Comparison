@@ -1,7 +1,7 @@
 # Embeddings Comparison
 This repo contains review of several phrase embeddings takes, publicly known in NLP community, evaluated on Rotten Tomatoes dataset.
 
-# In every notebook you can find:
+# In each of the interposed notebook you can find:
 >Up to three architecure:
 - RNN
 - CNN
